@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    {% extends "learning_logs/base.html" %}
+
+    {% block content %}
+
+        <p>
+            <a href="{% url 'learning_logs:topic' topic.id %}">{{  topic }}</a>
+        </p>
+        <p>Edit entry:</p>
+
+        <form action="{% url 'learning_logs:edit_entry' entry.id %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button name="submit">Save change</button>
+        </form>
+
+    {% endblock content %}
+</body>
+</html>

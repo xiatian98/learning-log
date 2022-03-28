@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+{% extends "learning_logs/base.html" %}
+
+{% block page_header %}
+    <h2>Log in to your account.</h2>
+{% endblock page_header %}
+{% load bootstrap4 %}
+{% block content %}
+    <form class="form" action="{% url 'users:login' %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button name="submit" class="btn btn-primary">Log in</button>
+        {% endbuttons %}
+        <input type="hidden" name="next" value="{% url 'learning_logs:index' %}"/>
+    </form>
+{% endblock content %}
+</body>
+</html>
